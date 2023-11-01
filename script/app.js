@@ -43,26 +43,8 @@ let burgersBtn = document.querySelectorAll('.wrapper__list-btn'),
     cartList = document.querySelector('.wrapper__navbar-basket'),
     cartClose = document.querySelector('.wrapper__navbar-close'),
     cartListItem = document.querySelector('.wrapper__navbar-checklist'),
-    cartTotalPrice = document.querySelector('.wrapper__navbar-totalprice'),
-    number = document.querySelector('.number'),
-    body = document.querySelector('body'),
-    colors = ['red', 'green', 'yellow', 'darkblue', 'blue']
+    cartTotalPrice = document.querySelector('.wrapper__navbar-totalprice')
     
-
-function numberStart() {
-    if (number.innerHTML = 100) {
-        number.innerHTML = '100 LVL'
-        body.style.background = 'lightblue'
-        number.style.fontSize = 100 + 'px'
-    }else {
-        number.innerHTML++;
-        number.style.color = colors[number.innerHTML%10]
-        setTimeout(()=>{
-            numberStart()
-        },100)
-    }
-}
-numberStart()
 
 burgersBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -171,3 +153,21 @@ window.addEventListener('click', (event) => {
     }
     
 })
+
+let title = document.querySelector('.title')
+let body = document.querySelector('body')
+
+function add() {
+    if (title.innerHTML < 100) {
+        title.innerHTML++
+        setTimeout(() => {
+            add()
+        }, 60)
+    }else {
+        title.innerHTML += ' LVL'
+        title.style.fontSize = '100px'
+        body.style.background = 'yellow'
+    }
+}
+
+add()
